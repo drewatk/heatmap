@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <head>
+        <!-- Jquery -->
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <!-- Tether -->
+        <script src="/bower_components/tether/dist/js/tether.min.js"></script>
+        <!-- Bootstrap v4 -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+        <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+        <!-- Socket.io -->
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+        <style>
+            body,
+            html {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #map {
+                height: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+
+        <!-- Google Maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmMZ872ZETmj5ntaJdw88uPenQreMIN8U&libraries=visualization&callback=initMap" async defer></script>
+        <script src="client.js"></script>
+    </body>
+</html>
