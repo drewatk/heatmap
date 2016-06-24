@@ -17,10 +17,16 @@ var client = new Twitter({
 });
 var stream = null;
 
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug');
+
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
+app.get('/', function (req, res) {
+  res.render('index.pug', {});
+});
 
 //Create web sockets connection.
 io.on('connection', function(socket) {
@@ -42,7 +48,7 @@ io.on('connection', function(socket) {
             "lng": tweet.coordinates.coordinates[1]
           };
 
-          console.log(tweet.text);
+          //console.log(tweet.text);
           //Send out to web sockets channel.
           socket.emit('twitter-stream', outputPoint);
         }
@@ -55,16 +61,3 @@ io.on('connection', function(socket) {
   socket.emit("connected");
 
 });
-
-// var service = process.argv[2] || 'charter';
-// var stream = client.stream('statuses/filter', {
-//   track: service + ' down, ' + service + ' broken, can\'t use ' + service + ', ' + service + ' is down, ' + service + ' outage'
-// });
-//
-// stream.on('data', function(tweet) {
-//   console.log(tweet.text);
-// });
-//
-// stream.on('error', function(error) {
-//   throw error;
-// });
